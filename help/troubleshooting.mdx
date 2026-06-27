@@ -1,0 +1,89 @@
+---
+title: "Fit4Life OS Troubleshooting Guide for Clinic Operators"
+sidebarTitle: "Troubleshooting"
+description: "Fix the most common problems in Fit4Life OS: SMS not delivered, orders not appearing, export failures, login issues, and bot not responding."
+---
+
+Use this guide to diagnose and resolve the most frequent issues clinic operators encounter in Fit4Life OS. Each entry describes the likely cause and the exact steps to fix it. Work through the causes in order — most issues are resolved by the first or second check.
+
+<AccordionGroup>
+
+  <Accordion title="SMS replies are not delivered to the customer">
+    If a customer reports that they did not receive your reply, check each of the following causes in order:
+
+    **Cause A — Customer is opted out**
+    The customer previously texted STOP, which permanently blocks all outbound messages to their number. You cannot send to opted-out numbers. Ask the customer to text START to your number to re-opt in. Once they do, delivery resumes automatically.
+
+    **Cause B — A2P campaign not yet approved**
+    Outbound messages cannot leave your messaging service until your A2P 10DLC campaign is approved by the carriers. Log in to your Twilio console, navigate to **Messaging → Regulatory Compliance**, and check the campaign status. If it is still pending, you must wait for approval before messages can be delivered.
+
+    **Cause C — Message too long**
+    Very long replies are automatically split into multiple SMS segments by Fit4Life OS to stay within carrier limits. If splitting is not occurring, confirm your deployment is running the latest version and contact support if the problem persists.
+
+    **Cause D — Inbound webhook routing not configured**
+    If the Twilio Messaging Service webhook routing is not correctly configured, replies may not route correctly. In your Twilio console, open your Messaging Service settings and confirm that inbound message routing is enabled and pointed at your webhook URL.
+  </Accordion>
+
+  <Accordion title='"Send Failed" appears in the inbox composer'>
+    A "Send Failed" error in the Inbox composer is usually caused by a temporary network interruption between your browser and the platform. Follow these steps:
+
+    1. Click **Retry** in the composer — most transient errors resolve on the first retry.
+    2. If the error persists, reload the page and log back in to confirm your session is still active. Sessions expire after 24 hours, and an expired session can cause send failures.
+    3. If the issue continues after re-authenticating, check your internet connection and try again. Contact support if the failure is consistent across multiple messages.
+  </Accordion>
+
+  <Accordion title="Order not visible in Finances or order count">
+    If an order is missing from your Finances dashboard or the order count looks wrong, check the order's status first.
+
+    Open [Orders](/features/orders) and locate the order in question. If its status is **awaiting payment**, it is intentionally excluded from all revenue analytics and counts until the customer pays. This is by design — revenue is only recognized on committed orders.
+
+    Once the customer pays the Clover invoice, the order status changes to committed and it appears immediately in Finances, P&L, and all related reports. If the customer has paid but the order still does not appear, allow a few minutes for the payment confirmation to process, then refresh the page.
+  </Accordion>
+
+  <Accordion title="Bot is not responding to customer texts">
+    If customers are texting your number and receiving no reply from the bot, work through these checks:
+
+    1. **Webhook URL** — Open your Twilio console, select your phone number or Messaging Service, and verify that the inbound webhook URL is set to the correct endpoint for your Fit4Life OS deployment. An incorrect or missing webhook means Twilio never forwards messages to the bot. Contact support if you are unsure what URL to use.
+    2. **AI API key** — The bot uses an AI API to generate responses. Confirm in your platform settings that the AI service credentials are correct and that the account has remaining credits. A depleted or invalid key causes the bot to fail silently.
+    3. **Messaging Service webhook routing** — In your Twilio Messaging Service settings, confirm that the Twilio Messaging Service webhook routing is correctly configured. Without this, inbound messages may not be forwarded to your webhook at all.
+  </Accordion>
+
+  <Accordion title="Export download is empty or fails">
+    If an export file downloads with no data, or the download fails entirely, try the following:
+
+    1. **Broaden the date range** — The most common cause of an empty export is a date range that contains no matching records. Change the range to **All Time** and re-export to confirm there is data available.
+    2. **Switch file formats** — If the download itself fails (no file appears), try switching from XLSX to CSV, or vice versa. This helps isolate whether the issue is format-specific.
+    3. **Check your browser's download permissions** — Some browsers block automatic downloads. Look for a blocked-download notification in the address bar and allow the file.
+    4. If the problem persists across formats and date ranges, contact support and include the date range and export type you were using.
+  </Accordion>
+
+  <Accordion title="The AI assistant isn't saving my changes">
+    The AI assistant requires your explicit confirmation before it writes any change to your data. After you ask it to make a change, look for the **preview card** that appears in the assistant panel — it describes exactly what will be changed.
+
+    Click **Confirm** on that card to apply the change. If you close the card, navigate away, or ignore it, nothing is saved. The assistant will not retry or apply the change automatically.
+
+    If you asked for a change and no preview card appeared, rephrase your request with more specific details (for example, include the customer's name or the exact field you want to update) and try again.
+  </Accordion>
+
+  <Accordion title="Customers added via the OS aren't recognized by the bot">
+    The SMS bot identifies customers exclusively by phone number. If a customer you added is not being recognized when they text in, open the [Customers page](/features/customers), find that customer, and click **Edit**. Confirm that a valid 10-digit mobile phone number is saved in the phone field.
+
+    If the field is blank or contains a landline or incorrectly formatted number, correct it and save. The bot will recognize the customer on their next inbound text with no additional steps required.
+  </Accordion>
+
+  <Accordion title="Referral tree is empty or flat">
+    The referral tree is built solely from the **Referred by** field on each customer profile. If the tree is empty or showing no connections, it means those fields have not been filled in yet — the platform does not infer or guess referral relationships.
+
+    To build the tree, open a customer's profile, click **Edit**, and set the **Referred by** dropdown to the customer who referred them. Save the profile. Repeat this for each customer who was referred by someone. The tree updates in real time as you add relationships. There is no bulk import for referrals — each relationship must be set on the individual profile.
+  </Accordion>
+
+  <Accordion title="Login redirects me back to the login page immediately">
+    If you enter your password and are sent straight back to the login screen, the most likely cause is an expired or corrupted browser session. Try these steps:
+
+    1. Clear your browser cookies for the Fit4Life OS domain, then reload the login page and try again.
+    2. If you are using a private or incognito window, make sure cookies are not blocked — the platform requires session cookies to function.
+    3. Confirm you are entering the correct practice password. Passwords are case-sensitive.
+    4. If the problem persists, try a different browser or device to rule out a local browser issue, then contact support.
+  </Accordion>
+
+</AccordionGroup>

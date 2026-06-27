@@ -1,0 +1,107 @@
+---
+title: "Browse and Manage Your Peptide Therapy Product Menu"
+sidebarTitle: "Menu"
+description: "The Fit4Life OS Menu screen displays your full product catalog across Injectable, Nasal, Oral, and Topical categories with pricing used by the SMS bot."
+---
+
+The Menu screen is the single source of truth for your clinic's peptide therapy product catalog. Every product name, category, and price displayed here is the same data your SMS bot uses when answering patient questions — so keeping the menu accurate ensures patients always receive correct information whether they are talking to staff or the bot.
+
+## Opening the Menu Screen
+
+Navigate to `/live/menu` in your Fit4Life OS dashboard. You will see your full catalog of **37 products** organized across four categories, along with a search bar to quickly locate any item.
+
+---
+
+## Product Categories
+
+Your catalog is divided into four treatment delivery categories. Each category groups products by how they are administered, making it easier for both staff and patients to navigate.
+
+<CardGroup cols={2}>
+  <Card title="Injectable" icon="syringe">
+    **14 products.** Subcutaneous and intramuscular peptide formulations, including dose-tiered options like Retatrutide.
+  </Card>
+  <Card title="Nasal" icon="nose">
+    **5 products.** Intranasal peptide sprays for systemic or localized delivery.
+  </Card>
+  <Card title="Oral" icon="pills">
+    **15 products.** Capsule, tablet, and sublingual peptide preparations.
+  </Card>
+  <Card title="Topical" icon="hand-dots">
+    **3 products.** Cream and gel formulations for transdermal peptide administration.
+  </Card>
+</CardGroup>
+
+---
+
+## Retatrutide Dose-Based Pricing
+
+Retatrutide is priced by dose level rather than as a single flat price. Different dose strengths carry different prices, and Fit4Life OS tracks the correct price for each dose automatically.
+
+<Steps>
+  <Step title="Locate Retatrutide in the Injectable category">
+    Use the search bar or scroll to the Injectable section. Retatrutide will appear with an expandable dose breakdown rather than a single price field.
+  </Step>
+  <Step title="Review pricing per dose">
+    Each dose tier lists its own unit price. When a patient or the SMS bot requests Retatrutide, the system references the specific dose to return the correct price.
+  </Step>
+  <Step title="Update a dose price when costs change">
+    Click the price field for the relevant dose tier and enter the new amount. The updated price takes effect immediately for both staff-assisted orders and the SMS bot.
+  </Step>
+</Steps>
+
+<Warning>
+  Updating a dose price on the Menu screen changes the price used in all future orders and SMS bot quotes immediately. Review any in-progress consultations before making price changes to avoid quoting discrepancies.
+</Warning>
+
+---
+
+## Searching the Menu
+
+The search bar at the top of the Menu screen filters products in real time as you type. You can search by:
+
+- **Product name** — type any part of the name to narrow results
+- **Category** — type a category name (e.g., "Nasal") to see only that group
+- **Keywords** — common abbreviations or ingredient names associated with a product
+
+Search results display the matching product, its category badge, and its current price. Clear the search field to return to the full catalog view.
+
+---
+
+## How the Menu Powers the SMS Bot
+
+The SMS bot that communicates with your patients does not maintain its own separate product list. It reads directly from your Fit4Life OS menu, which means any price or product update you make here is reflected in bot responses instantly.
+
+<CardGroup cols={2}>
+  <Card title="Product Lookups" icon="magnifying-glass">
+    When a patient asks the bot about a specific product, the bot retrieves the name and price from your live menu and includes it in the reply.
+  </Card>
+  <Card title="Category Browsing" icon="list">
+    When a patient asks to see all options in a category, the bot lists every product in that category along with pricing — exactly as it appears on your Menu screen.
+  </Card>
+</CardGroup>
+
+<Tip>
+  When a patient sends a broad question like "What do you offer?" the bot routes the reply by category — listing each category name and its products one group at a time — to keep individual SMS messages under carrier character limits. Encourage patients to ask about a specific category (e.g., "Show me oral options") for the fastest, most readable response.
+</Tip>
+
+---
+
+## Keeping Your Menu Accurate
+
+Because the menu drives both staff workflows and patient-facing bot replies, treating it as a living document is important.
+
+<Steps>
+  <Step title="Audit prices after supplier changes">
+    Whenever your wholesale costs or retail pricing change, update the affected products on the Menu screen before communicating new prices to patients.
+  </Step>
+  <Step title="Verify category assignments">
+    If a product is miscategorized, patients asking the bot for a specific delivery type may not see it. Confirm each product sits in the correct category.
+  </Step>
+  <Step title="Test bot responses after updates">
+    After editing the menu, send a quick test message through the SMS bot to confirm it is quoting the updated price and returning the product in the expected category.
+  </Step>
+</Steps>
+
+<Info>
+  The Menu screen is currently a display and editing interface — you cannot add or remove products from this screen. Contact your Fit4Life OS account manager to add new products or retire discontinued ones from the catalog.
+</Info>

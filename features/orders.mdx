@@ -1,0 +1,112 @@
+---
+title: "Track and Manage Orders in the Fit4Life OS Order Board"
+sidebarTitle: "Orders"
+description: "Create, update, and fulfill customer orders in Fit4Life OS. The order board tracks every order from request through payment and delivery."
+---
+
+The Orders screen, available at `/live/orders`, is the central hub for every transaction your clinic processes. It displays a Kanban-style board where each column represents a stage in the order lifecycle — from the moment a customer requests a product all the way through payment and delivery. Whether an order was created by a staff member or submitted automatically by the SMS bot, it shows up here.
+
+## Order Statuses
+
+Every order moves through a defined sequence of statuses. Each status corresponds to a column on the Kanban board.
+
+<CardGroup cols={4}>
+  <Card title="Requested" icon="hand">
+    The order has been initiated — either by a staff member manually or by a customer through the SMS bot — but no invoice has been sent yet.
+  </Card>
+  <Card title="Invoiced" icon="file-invoice">
+    An invoice has been sent to the customer and is awaiting their review. Payment has not yet been collected.
+  </Card>
+  <Card title="Pending Payment" icon="hourglass-half">
+    The customer has acknowledged the invoice but payment has not yet landed. The order is not yet reflected in revenue reports.
+  </Card>
+  <Card title="Fulfilled" icon="circle-check">
+    Payment has been received and the order has been delivered or dispensed. This is the only status that counts toward revenue metrics.
+  </Card>
+</CardGroup>
+
+<Warning>
+  An order only commits to your revenue reports and KPI tiles after payment lands. Orders sitting in **Requested**, **Invoiced**, or **Pending Payment** do not appear in any revenue figures until they are paid and fulfilled.
+</Warning>
+
+## Creating a New Order
+
+<Steps>
+  <Step title="Open the new order form">
+    Click **New Order** in the top-right corner of the order board.
+  </Step>
+  <Step title="Select the customer">
+    Search for an existing customer by name, phone, or email. You must select an existing customer record — orders cannot be created for anonymous contacts.
+  </Step>
+  <Step title="Pick a product">
+    Use the searchable product picker to find the item. Start typing the product name and the picker will narrow the list. Selecting a product automatically fills in the catalog price.
+  </Step>
+  <Step title="Confirm channel and payment source">
+    The **channel** field records how this order was initiated (for example, in-clinic, phone, or SMS bot). The **payment source** field records the payment method the customer will use. Both fields are auto-populated based on your catalog defaults but can be overridden.
+  </Step>
+  <Step title="Add an Uber delivery address (if applicable)">
+    If the order will be delivered via Uber, enter the destination address in the **Uber delivery** field. This field is optional and only appears when the delivery method supports it.
+  </Step>
+  <Step title="Save the order">
+    Click **Save**. The order card appears in the **Requested** column of the Kanban board.
+  </Step>
+</Steps>
+
+## Editing an Order
+
+To edit an order at any stage before fulfillment:
+
+1. Locate the order card on the board or use the status filter to find it.
+2. Click the order card to open the detail panel.
+3. Click **Edit**, make your changes, and click **Save**.
+
+<Info>
+  You can edit the product, price, channel, payment source, and delivery address on any order that has not yet been marked as fulfilled. Once an order is fulfilled, it is locked and cannot be modified.
+</Info>
+
+## Marking an Order as Fulfilled
+
+<Steps>
+  <Step title="Confirm payment">
+    Before marking an order as fulfilled, confirm that payment has been collected. Fulfilling an unpaid order will cause it to appear in revenue reports prematurely.
+  </Step>
+  <Step title="Open the order">
+    Click the order card to open the detail panel.
+  </Step>
+  <Step title="Mark as fulfilled">
+    Click **Mark as Fulfilled**. The card moves to the **Fulfilled** column and the order value is immediately counted in your revenue metrics and KPI tiles.
+  </Step>
+</Steps>
+
+## Filtering by Status
+
+Use the status filter bar at the top of the order board to focus on a specific column. You can also navigate directly to a filtered view using the URL parameter `?status=` followed by the status slug:
+
+| Status | URL parameter |
+|---|---|
+| Requested | `?status=requested` |
+| Invoiced | `?status=invoiced` |
+| Pending Payment | `?status=pending_payment` |
+| Fulfilled | `?status=fulfilled` |
+
+<Tip>
+  Bookmark `?status=pending_payment` and check it at the start and end of each clinic day. It shows every order awaiting payment so you can follow up, collect, and move them to fulfilled — keeping your revenue reporting accurate.
+</Tip>
+
+## SMS Bot Orders
+
+When a customer texts the Fit4Life OS SMS bot to request a reorder, the bot creates an order automatically on their behalf. These orders appear on the board in the **Requested** column, labeled with the SMS channel so you can distinguish them from manually created orders.
+
+You review and advance bot-created orders the same way you would any other order — check the product and price, send an invoice, collect payment, and mark the order fulfilled. No separate workflow is required.
+
+<Note>
+  Only customers with a phone number on file can place orders through the SMS bot. If you see a gap between your expected reorder volume and the orders appearing on the board, check that your active customers have valid phone numbers saved in their profiles.
+</Note>
+
+## Uber Delivery Field
+
+The **Uber delivery** field on an order captures the destination address when you are dispatching via Uber. Fill it in at the time of order creation or when editing the order before fulfillment. This field is informational — Fit4Life OS records the address for your reference and reporting, but does not directly integrate with the Uber dispatch system.
+
+## KPI Tiles and the Order Board
+
+The KPI tiles displayed at the top of the dashboard always reflect your **whole business** for the selected date range. Filtering the order board by status or product does not change what the tiles show — they are a practice-wide summary, not a view of whatever is currently on screen.

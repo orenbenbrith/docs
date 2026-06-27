@@ -1,0 +1,90 @@
+---
+title: "Export Clinic Reports as PDF, DOCX, XLSX, and More"
+sidebarTitle: "Exports"
+description: "Generate branded reports from the Fit4Life OS Reports hub in seven formats including PDF, DOCX, XLSX, PPTX, CSV, HTML, and PNG with optional PII redaction."
+---
+
+The Reports hub lets you export any clinic view as a polished, branded file in the format that fits your workflow — whether that's a PDF for a compliance folder, a spreadsheet for a bookkeeper, or a slide deck for a partner meeting. Open it by navigating to `/live` and selecting the **Reports** tab, or go directly to `/live/exports`.
+
+<Tip>
+  Enable the **PII Redaction** toggle before exporting any report you plan to share with outside parties — accountants, consultants, or investors. This strips all customer names and phone numbers from the output so sensitive patient data stays inside your clinic.
+</Tip>
+
+## Available report views
+
+Choose the view that matches the data you need before selecting an export format.
+
+<CardGroup cols={2}>
+  <Card title="Customers" icon="users">
+    Full customer roster with contact details, enrollment dates, and therapy status.
+  </Card>
+  <Card title="Orders" icon="box">
+    All committed and pending orders with line items, quantities, and payment status.
+  </Card>
+  <Card title="Finances" icon="credit-card">
+    Revenue, invoices, and payment totals across a selected date range.
+  </Card>
+  <Card title="P&L" icon="chart-line">
+    Profit and loss summary combining revenue, COGS, and payroll for the period.
+  </Card>
+</CardGroup>
+
+## Export formats
+
+Fit4Life OS supports seven output formats. Pick the one that best matches your destination.
+
+<CardGroup cols={2}>
+  <Card title="PDF" icon="file-pdf">
+    Branded, print-ready documents. Ideal for compliance records, audit folders, and patient-facing summaries.
+  </Card>
+  <Card title="DOCX" icon="file-word">
+    Editable Word documents. Use when recipients need to annotate or reformat the report.
+  </Card>
+  <Card title="XLSX" icon="file-excel">
+    Excel workbooks with structured columns. Best for data analysis and bookkeeping workflows.
+  </Card>
+  <Card title="PPTX" icon="file-powerpoint">
+    PowerPoint slide decks pre-populated with your clinic data. Hand these directly to stakeholders without reformatting.
+  </Card>
+  <Card title="CSV" icon="file-csv">
+    Flat comma-separated files for importing into third-party tools, EHRs, or custom pipelines.
+  </Card>
+  <Card title="HTML" icon="code">
+    Self-contained HTML file with inline styles. Open in any browser or embed in internal portals.
+  </Card>
+  <Card title="PNG" icon="image">
+    A static image of the report — useful for presentations, emails, or quick visual snapshots.
+  </Card>
+</CardGroup>
+
+## Generating an export
+
+<Steps>
+  <Step title="Select a report view">
+    In the Reports hub, click the view you want to export — **Customers**, **Orders**, **Finances**, **P&L**, or another available view. Apply any date range or filter settings before proceeding.
+  </Step>
+  <Step title="Configure PII redaction (optional)">
+    If the export will leave your clinic, toggle **Redact PII** to on. Customer names and phone numbers will be replaced with anonymized placeholders in the output.
+  </Step>
+  <Step title="Choose a format">
+    Open the **Export As** dropdown and select your target format: PDF, DOCX, XLSX, PPTX, CSV, HTML, or PNG.
+  </Step>
+  <Step title="Click Export">
+    Click the **Export** button. Fit4Life OS generates the file server-side and triggers a download in your browser. Large reports may take a few seconds to compile.
+  </Step>
+</Steps>
+
+## Branded outputs
+
+Every export carries Fit4Life OS branding — your clinic name, logo (if configured), and report metadata appear in the header. PDF and DOCX outputs include a footer with the generation timestamp and the selected date range so recipients always know how current the data is.
+
+## Format guidance by use case
+
+| Use case | Recommended format |
+|---|---|
+| Compliance or audit folder | PDF |
+| Bookkeeper or accountant | XLSX or CSV |
+| Partner or investor presentation | PPTX or PNG |
+| Internal web portal | HTML |
+| Third-party data import | CSV |
+| Editable narrative report | DOCX |

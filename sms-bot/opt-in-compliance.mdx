@@ -1,0 +1,88 @@
+---
+title: "SMS Opt-In and A2P Compliance for Fit4Life Clinics"
+sidebarTitle: "Opt-In & Compliance"
+description: "Set up A2P 10DLC registration, collect compliant opt-ins via the Fit4Life portal, and understand STOP/HELP/START keyword handling for your clinic's SMS program."
+---
+
+Running a business SMS program in the United States requires your phone number to be registered under the A2P 10DLC framework, and every customer you message must have given explicit consent. Fit4Life OS is built to support both requirements — your Twilio number is registered to an approved Brand and Campaign, and the opt-in portal handles compliant consent collection for you. Understanding how this works protects your clinic from carrier filtering and regulatory risk.
+
+## A2P 10DLC Registration
+
+All US business text messaging must use an **Application-to-Person (A2P) 10DLC** registered number. This means your Twilio long-code number is tied to a verified **Brand** (your business identity) and a **Campaign** (the specific messaging use case — in your case, customer reorders and account updates for a healthcare practice).
+
+Fit4Life OS configures this for you through Twilio. Before your bot goes live, confirm the following are approved in your Twilio console:
+
+- **Brand registration** — your clinic's legal business name, EIN, and contact details are submitted and approved
+- **Campaign registration** — the campaign is registered under the appropriate use case category and linked to your Messaging Service
+- **Number assignment** — your clinic's long-code number is attached to the registered Messaging Service
+
+<Info>
+Campaign approval from The Campaign Registry (TCR) can take several business days. Do not begin sending outbound messages until you receive confirmation that your campaign status is **VERIFIED**.
+</Info>
+
+## Collecting Opt-In Consent
+
+The primary opt-in path for your clinic is the public consent portal at **fit4lifecare.com/opt-in**. Direct new customers to this page before you initiate any outbound messaging.
+
+On the opt-in form, customers:
+
+1. Enter their **first name, last name, and mobile phone number**
+2. Check a **consent checkbox** with the following disclosure:
+
+> *By checking this box, you agree to receive text messages from Fit4Life, including reorder confirmations, account updates, and customer-care replies. Message and data rates may apply. Reply STOP at any time to opt out.*
+
+Once submitted, the customer's number is marked as opted in within Fit4Life OS and the bot is authorized to respond to and initiate messages with that number.
+
+<Warning>
+Never initiate proactive outbound messages to customers who have not explicitly opted in through the portal or by texting your clinic number first. Sending to non-opted-in numbers violates carrier policies and TCPA regulations and can result in your campaign being suspended.
+</Warning>
+
+## Customer-Initiated Contact
+
+A customer who texts your clinic number first is considered to have initiated contact. In this case, you may reply to their message without requiring them to complete the opt-in form first — their inbound text constitutes consent for that reply conversation. If you later want to send proactive outbound messages to that customer (outside of a reply context), collect a formal opt-in through the portal.
+
+## STOP / HELP / START Keywords
+
+The bot handles the following keywords deterministically, regardless of the customer's message context:
+
+| Keyword | Action |
+|---------|--------|
+| **STOP** | Immediately opts the number out of all future messages. Fit4Life OS marks the customer as opted out and the bot will not send to that number again. |
+| **START** | Re-opts a previously opted-out number back in. The customer is restored to active status and the bot resumes normal handling. |
+| **HELP** | Sends a carrier-required informational reply with the program name, a brief description, and instructions to reply STOP to opt out. |
+
+<Note>
+STOP, START, and HELP are processed before any other bot logic. Even if a customer texts STOP mid-order or mid-conversation, the opt-out takes effect immediately and no further messages are sent.
+</Note>
+
+## Opted-Out Numbers
+
+Once a number is opted out, the bot enforces a hard block — it will not send any message to that number, even if the customer has a pending order, an unpaid invoice, or an active conversation thread. If a customer who has opted out contacts you about their order, handle the interaction through a call or email. Do not manually send SMS to opted-out numbers through the Fit4Life inbox.
+
+## Privacy Policy and Terms of Service
+
+Your clinic's SMS program is covered under the legal documents hosted at:
+
+- **Privacy Policy** — [fit4lifecare.com/legal/privacy](https://fit4lifecare.com/legal/privacy)
+- **Terms of Service** — [fit4lifecare.com/legal/terms](https://fit4lifecare.com/legal/terms)
+
+These pages describe how customer data is collected, stored, and used. Direct customers to these URLs if they ask about their data rights or how their phone number is used.
+
+## What to Do If a Customer Says They Didn't Opt In
+
+If a customer contacts you claiming they never consented to receive texts from your clinic, take the following steps:
+
+<Steps>
+  <Step title="Opt them out immediately">
+    Go to the customer's record in Fit4Life OS and mark them as opted out. This stops all future bot messages to their number right away.
+  </Step>
+  <Step title="Review the opt-in record">
+    Check the consent log for that phone number. The portal records a timestamp, IP address, and form submission for every opt-in. If you have a record, share it with the customer if they request it.
+  </Step>
+  <Step title="Check for customer-initiated contact">
+    Review the SMS thread. If the customer texted your number first, that constitutes initiation and you may have complied. Document this finding.
+  </Step>
+  <Step title="Escalate if needed">
+    If you cannot locate an opt-in record and the customer did not initiate contact, treat the situation as a compliance incident. Document it, keep the number opted out, and consult your legal counsel if the customer escalates further.
+  </Step>
+</Steps>

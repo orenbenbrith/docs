@@ -1,0 +1,72 @@
+---
+title: "Fit4Life OS SMS Bot: AI-Powered Reorder Assistant"
+sidebarTitle: "Overview"
+description: "The Fit4Life OS SMS bot handles customer reorders, menu questions, and support over text — so you can serve clients 24/7 without picking up your phone."
+---
+
+The Fit4Life OS SMS bot is your clinic's always-on text assistant. When a customer texts your clinic's Twilio number, the bot identifies them by phone number, greets them by name, and handles their request — whether that's browsing the product menu, looking up pricing, or reordering a previous purchase. You stay focused on patient care while the bot takes care of routine interactions around the clock.
+
+## What the Bot Does
+
+The bot connects directly to your real product catalog and customer database, so every answer it gives reflects your actual inventory and that specific customer's account history. It is scoped strictly to the customer who is texting — it cannot access or reveal another customer's data, and it will never share your clinic's financial or internal business information.
+
+Customers can use the bot to:
+
+- **Browse the menu by category** — ask "what peptides do you carry?" and the bot returns all products in that category
+- **Search for a specific product** — ask about a named product and the bot looks it up and returns details
+- **Ask about pricing** — the bot surfaces the price from your live catalog
+- **Place a reorder** — the bot recalls the customer's last order, confirms it with them, and sends a Clover payment link to commit the purchase
+- **Ask general clinic questions** — hours, location, how the program works, and similar support topics
+
+<Note>
+The bot will never place or commit an order without first sending the customer a payment link. A conversational "yes" from the customer creates a pending order and triggers an invoice — payment is the final commit.
+</Note>
+
+## What the Bot Never Does
+
+- Share any other customer's account details, order history, or contact information
+- Reveal clinic revenue, margins, supplier relationships, or internal operational data
+- Finalize an order charge without sending a Clover payment link first
+- Respond to clinical questions (dosing, medical advice, side effects) — those are escalated to your team
+
+## Escalation to a Human
+
+Some situations require a real person. The bot automatically escalates to your Operations Inbox when it encounters:
+
+- **Clinical questions** — anything touching dosing, side effects, contraindications, or medical guidance
+- **Refund or dispute requests** — billing issues are handed off for human resolution
+- **Unknown senders wanting to order** — new leads who haven't been onboarded are flagged for your team to handle intake
+- **Distressed customers** — any conversation where the customer expresses frustration, urgency, or distress
+
+When escalated, the bot pauses and your team picks up the thread from `/live/inbox`.
+
+## Powered by Claude and Your Data
+
+The bot is powered by Claude (Anthropic's large language model) and is grounded entirely in your clinic's product catalog and customer database. It does not hallucinate products or prices — it queries your real data through tools on every request. Conversation history is archived and retrieved as context so the bot can reference what a customer has asked before.
+
+## SMS Infrastructure
+
+Your bot runs on a **Twilio A2P 10DLC registered number** — a dedicated long-code number tied to an approved Brand and Campaign. Customers opt in by texting your clinic number first or by submitting the consent form at the `/opt-in` portal.
+
+### Prerequisites
+
+Before your bot goes live, confirm you have:
+
+- A **Twilio account** with a purchased long-code phone number
+- **A2P 10DLC Brand and Campaign approval** from Twilio (required for all US business SMS)
+- A **Twilio Messaging Service** with your number attached
+- **Anthropic API access** provisioned for the bot's Claude integration
+
+## Explore the SMS Bot Docs
+
+<CardGroup cols={2}>
+  <Card title="How It Works" icon="gears" href="/sms-bot/how-it-works">
+    See how the bot routes menu browsing, reorders, and support requests step by step.
+  </Card>
+  <Card title="Human Takeover" icon="headset" href="/sms-bot/human-takeover">
+    Learn how to step into any bot conversation from the Operations Inbox and hand it back when you're done.
+  </Card>
+  <Card title="Opt-In & Compliance" icon="shield-check" href="/sms-bot/opt-in-compliance">
+    Set up A2P registration, collect compliant opt-ins, and understand STOP/HELP/START keyword handling.
+  </Card>
+</CardGroup>

@@ -1,0 +1,79 @@
+---
+title: "Use the In-OS AI Assistant to Analyze and Update Data"
+sidebarTitle: "AI Assistant"
+description: "The Fit4Life OS AI assistant reads your clinic data, answers questions, and proposes changes you confirm before anything is saved — powered by Claude."
+---
+
+The Fit4Life OS AI assistant is your on-demand analyst and data editor, built directly into the platform so you never leave the screen to get answers. Ask it about revenue trends, look up a patient's order history, or instruct it to create a new record — it will always show you exactly what it plans to do before touching anything. The assistant is powered by Claude and scoped entirely to your clinic's data.
+
+<Warning>
+  The assistant is single-tenant by design. It cannot answer questions about other clinics or businesses, and it will not perform cross-clinic data queries. Any prompt that attempts to pull data outside your clinic's scope will be declined.
+</Warning>
+
+## Opening the assistant
+
+You can open the assistant from two entry points:
+
+- **Sparkles FAB** — the floating action button in the bottom-right corner of every screen. Click the sparkles icon to slide open the assistant panel without leaving your current view.
+- **Top-bar Assistant button** — the **Assistant** link in the top navigation bar opens the same panel. Use this when you want more vertical space for longer conversations.
+
+## What the assistant can do
+
+<CardGroup cols={2}>
+  <Card title="Answer data questions" icon="magnifying-glass">
+    Ask about totals, trends, and records — revenue for a date range, a customer's last order, product cost history, payroll entries — and get an immediate answer pulled from your live data.
+  </Card>
+  <Card title="Propose data changes" icon="pen-to-square">
+    Instruct the assistant to create or edit customers, orders, COGS entries, or payroll records. It stages the change as a preview card for your review before writing anything.
+  </Card>
+</CardGroup>
+
+## Read vs. write operations
+
+The assistant distinguishes between reading and writing so you stay in control.
+
+**Reading data (no confirmation needed)**
+
+The assistant can look up and display any of the following without asking for confirmation:
+
+- Revenue and P&L totals for any period
+- Customer details and contact information
+- Order history and line items
+- Product costs and COGS records
+
+**Writing data (confirmation required)**
+
+Any operation that creates or modifies a record requires your explicit approval. Before saving, the assistant displays a **preview card** that describes exactly what will change — field by field. You then choose:
+
+- **Confirm** — the change is saved and logged.
+- **Cancel** — nothing is written, and the assistant awaits your next instruction.
+
+## Audit trail
+
+Every confirmed write is recorded in the platform's activity log with the timestamp, the assistant session ID, and a summary of the change. This gives you a complete history of AI-assisted edits for compliance and review purposes.
+
+## Managing your chat session
+
+<Steps>
+  <Step title="Start a new chat">
+    Click **New chat** at the top of the assistant panel to clear the current conversation context. Use this when switching between unrelated tasks to keep the assistant focused.
+  </Step>
+  <Step title="Use suggestion chips">
+    Quick-start prompts appear at the bottom of the panel when the conversation is empty. Click any chip to pre-fill a common question — for example, "What was last month's revenue?" or "Show me open orders."
+  </Step>
+  <Step title="Keep the session active">
+    The assistant session expires after **30 minutes of inactivity**. If you leave the panel idle, the context resets automatically. You will see a notice when this happens, and you can start a new chat to continue.
+  </Step>
+</Steps>
+
+## Example prompts
+
+The following prompts illustrate the range of tasks the assistant handles well:
+
+- *"What's the total revenue for Q2?"*
+- *"Show me all orders for Jane Smith."*
+- *"Create a new customer: Maria Lopez, 555-867-5309, enrolled today."*
+- *"Update the COGS for BPC-157 vials to \$18.50."*
+- *"Add a payroll entry for Dr. Reyes: \$4,200 for July."*
+
+For each write-type prompt, the assistant stages the change as a preview card before saving.

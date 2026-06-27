@@ -1,0 +1,83 @@
+---
+title: "Automate Reorders, Invoices, and Clinic Notifications"
+sidebarTitle: "Automation"
+description: "Fit4Life OS automates the reorder-to-payment chain: a confirmed order triggers an invoice, payment commits the order, and the clinic is notified automatically."
+---
+
+Fit4Life OS connects the entire reorder-to-payment workflow so your team spends less time chasing invoices and more time with patients. When a customer confirms a reorder, the platform immediately creates a pending order, fires a Clover invoice, and waits for payment — at which point the order commits, delivery is dispatched, and both the clinic and the owner receive an SMS notification. Every step happens automatically, and both Clover invoicing and Uber delivery can be run in test mode so you can verify the full chain before going live.
+
+<Note>
+  The clinic and owner notification phone numbers must be configured in your account settings for SMS alerts to send on payment. Without these values, the notification step is silently skipped.
+</Note>
+
+## The automation chain
+
+<Steps>
+  <Step title="Customer confirms a reorder">
+    The customer replies to the SMS bot confirming they want to reorder. Fit4Life OS validates the reply and moves to the next step.
+  </Step>
+  <Step title="Pending order created + Clover invoice sent">
+    A pending order is created in Fit4Life OS and a Clover invoice is dispatched to the customer. The order is marked **pending** and does not yet appear in reports or financial totals.
+  </Step>
+  <Step title="Customer pays the invoice">
+    The customer pays via the Clover-hosted payment link. The Clover webhook signals Fit4Life OS that payment has landed.
+  </Step>
+  <Step title="Order committed + delivery dispatched">
+    On confirmed payment, the order status flips to **committed**, it becomes visible in all reports and financials, and an Uber delivery request is dispatched automatically (if configured).
+  </Step>
+  <Step title="Clinic notified">
+    Fit4Life OS texts the configured clinic and owner notification numbers to let your team know the order is paid, committed, and on its way.
+  </Step>
+</Steps>
+
+## Payment-gated commit
+
+Pending orders are intentionally invisible in the Reports hub and all financial calculations until payment is confirmed. This prevents unearned revenue from appearing in your P&L and ensures your financials only reflect real transactions. Once payment lands and the order commits, it surfaces immediately in every relevant view.
+
+## Clover integration
+
+Connect your Clover account in your account settings to enable live invoicing. Fit4Life OS sends invoices through your Clover merchant account and listens for payment webhooks automatically.
+
+<CardGroup cols={2}>
+  <Card title="Live mode" icon="plug">
+    With your Clover account connected, the platform sends real invoices to customers and processes payment confirmations as they arrive.
+  </Card>
+  <Card title="Test mode" icon="flask">
+    Without a connected Clover account, the platform runs in test mode — simulating invoice creation and payment confirmation so you can verify the full workflow without touching real payments.
+  </Card>
+</CardGroup>
+
+## Uber delivery integration
+
+Enable Uber delivery in your account settings to automatically dispatch orders on payment confirmation.
+
+<CardGroup cols={2}>
+  <Card title="Live mode" icon="truck">
+    With Uber delivery enabled, Fit4Life OS submits a real delivery request through Uber Direct as soon as an order is committed.
+  </Card>
+  <Card title="Test mode" icon="flask">
+    Without Uber delivery enabled, the platform simulates a successful dispatch and logs the pickup confirmation internally. No real delivery is requested.
+  </Card>
+</CardGroup>
+
+## Switching to live
+
+Activating either integration requires no technical changes. Connect your Clover account or enable Uber delivery in your account settings, and the platform switches from test mode to live automatically — no downtime required.
+
+## Manual override
+
+Any step in the chain can be triggered manually from the **Orders** screen if automation stalls or you need to reprocess a step.
+
+<Steps>
+  <Step title="Open the Orders screen">
+    Navigate to `/live` and select the **Orders** tab.
+  </Step>
+  <Step title="Locate the order">
+    Find the pending or committed order you need to act on using the search or filter controls.
+  </Step>
+  <Step title="Trigger the step manually">
+    Open the order detail and use the action menu to resend an invoice, manually commit a paid order, retrigger delivery dispatch, or resend the clinic notification.
+  </Step>
+</Steps>
+
+Manual overrides are logged in the activity log with the staff member's identity and a timestamp so you always have a record of manual interventions.

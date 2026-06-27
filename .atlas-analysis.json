@@ -1,0 +1,88 @@
+{
+  "projectType": "saas",
+  "projectName": "Fit4Life OS",
+  "projectDescription": "An AI-powered operating system for physician-supervised peptide therapy clinics — combining a customer CRM, SMS reorder bot, order management, financial tracking, and automated clinic notifications in one platform.",
+  "theme": "almond",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "getting-started/login-and-access"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/dashboard",
+              "features/customers",
+              "features/orders",
+              "features/finances",
+              "features/referrals",
+              "features/menu"
+            ]
+          },
+          {
+            "group": "SMS Bot",
+            "pages": [
+              "sms-bot/overview",
+              "sms-bot/how-it-works",
+              "sms-bot/human-takeover",
+              "sms-bot/opt-in-compliance"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "operations/inbox",
+              "operations/exports",
+              "operations/assistant",
+              "operations/automation"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Customer CRM with order history, LTV tracking, and reorder cadence",
+    "AI-powered SMS reorder bot with category-aware menu browsing",
+    "Human-takeover inbox for live operator override of bot conversations",
+    "Financial tracking: P&L, daily sales ledger, payroll, and goals",
+    "Multi-format exports (PDF, DOCX, XLSX, PPTX, CSV, PNG)",
+    "In-OS AI assistant with confirm-before-write safety gate",
+    "Referral tree visualization with revenue rollups",
+    "Payment-gated order flow: orders commit only after Clover invoice payment",
+    "A2P-compliant SMS opt-in portal with STOP/HELP/START handling",
+    "Light and dark theme with per-clinic branding"
+  ],
+  "publicApiSurface": [
+    "POST /api/sms/webhook — inbound SMS handler (Twilio TwiML)",
+    "POST /api/ops/reply — send manual SMS reply from inbox",
+    "POST /api/ops/takeover — toggle AI/human control of a thread",
+    "GET /api/ops/threads — list active bot conversation threads",
+    "POST /api/live/customers — create a new customer",
+    "PATCH /api/live/customers/[id] — update customer record",
+    "DELETE /api/live/customers/[id] — remove a customer",
+    "POST /api/live/orders — create a new order",
+    "PATCH /api/live/orders/[id] — update an order",
+    "POST /api/live/export — generate a report export (PDF/DOCX/XLSX/etc.)",
+    "POST /api/opt-in — record SMS consent from the public opt-in portal",
+    "POST /api/admin/db-setup — seed/migrate the database (admin only)"
+  ]
+}

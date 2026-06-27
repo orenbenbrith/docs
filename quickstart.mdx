@@ -1,0 +1,89 @@
+---
+title: "Get Started with Fit4Life OS: First Login and First Order"
+sidebarTitle: "Quickstart"
+description: "Set up your Fit4Life OS clinic dashboard, add your first customer, and start taking orders in under 10 minutes with this step-by-step guide."
+---
+
+Fit4Life OS puts everything your peptide therapy clinic needs — patient triage, order management, revenue tracking, and automated follow-up — in one browser-based dashboard. This guide walks you through your first login, a quick tour of the interface, and the steps to add a customer and place your first order. By the end you'll be ready to run your clinic from day one.
+
+<Tip>
+  Press **⌘K** (Mac) or **Ctrl K** (Windows) at any time to open the command palette and jump directly to any page, customer, or order without touching the sidebar.
+</Tip>
+
+<Steps>
+
+  <Step title="Navigate to your clinic URL and log in">
+
+    Open your browser and go to your clinic's Fit4Life OS address. Your URL ends in `/live` — for example, `https://dashboard.yourclinicdomain.com/live`. Check with your admin if you're unsure which address to use.
+
+    On the **Login** page, enter your **practice password** and click **Enter Dashboard**. There is no per-user username; the single practice password grants access to the full operator dashboard.
+
+    <Note>
+      Sessions last **24 hours**. After that you'll be redirected to the login page and will need to enter the practice password again.
+    </Note>
+
+  </Step>
+
+  <Step title="Tour the dashboard">
+
+    After logging in you land on the main **Dashboard**. Take a moment to orient yourself to three key areas:
+
+    - **Needs You strip** — a triage rail at the top of the page that surfaces customers or orders that require your immediate attention, such as pending follow-ups, unread inbox messages, or orders stuck in a waiting status.
+    - **KPI tiles** — at-a-glance metrics including total active customers, orders this month, and outstanding revenue. Tiles update in real time as you work.
+    - **Revenue chart** — a time-series graph below the KPI tiles showing collected revenue over your selected date range. Use the date picker in the top-right of the chart to switch between weekly, monthly, and custom views.
+
+    Spend a minute clicking through the sidebar links — **Customers**, **Orders**, **Finances**, **Referrals**, **Delivery**, **Menu**, **Inbox**, **Reports**, and **Settings** — to get a feel for the layout before moving on.
+
+  </Step>
+
+  <Step title="Add your first customer">
+
+    In the sidebar, click **Customers**, then click the **\+ New Customer** button in the top-right corner of the page.
+
+    Fill in the required fields:
+
+    | Field | What to enter |
+    |---|---|
+    | **Name** | Customer's full name |
+    | **Phone** | Mobile number in E.164 format, e.g. `+15551234567` |
+    | **Referral Source** | How the customer found your clinic (dropdown) |
+
+    Click **Save Customer**. Fit4Life OS creates the customer record and opens their profile page automatically.
+
+  </Step>
+
+  <Step title="Create your first order">
+
+    From the customer's profile page, click **\+ New Order**. The order builder slides open on the right side of the screen.
+
+    1. **Product picker** — start typing a product name or scroll the list to find the peptide or service you want to add. Click a product to select it.
+    2. **Price** — the default price from your **Menu** is pre-filled. Edit the field if you need to apply a custom price for this order.
+    3. **Status** — choose the appropriate starting status from the dropdown (e.g. *Pending*, *Active*, or *Awaiting Payment*).
+
+    Click **Save Order** to confirm. The order is now attached to the customer's record.
+
+  </Step>
+
+  <Step title="Verify the order appears on the Orders board">
+
+    In the sidebar, click **Orders**. Your new order appears in the board view, grouped by its current status column. Confirm the customer name, product, and price all look correct.
+
+    If you need to make a change, click anywhere on the order card to reopen it, edit the fields, and click **Save Order** again.
+
+  </Step>
+
+  <Step title="(Optional) Activate the SMS bot">
+
+    Fit4Life OS includes an AI-powered SMS bot that can automatically follow up with customers, send appointment reminders, and handle common questions — all via text message.
+
+    To turn it on, go to **Settings → SMS Bot** and follow the activation steps. Full setup instructions are in the [SMS Bot Overview](/sms-bot/overview).
+
+    <Note>
+      The SMS bot requires a connected **Twilio** account before any messages can be sent to customers. Activating the bot in Settings without completing Twilio setup will enable the interface but no texts will be delivered.
+    </Note>
+
+  </Step>
+
+</Steps>
+
+You're all set. Your first customer is in the system, your first order is on the board, and you know where everything lives. Head to [Login & Access](/getting-started/login-and-access) for a deeper look at sessions and navigation, or explore the sidebar sections to keep building out your clinic.

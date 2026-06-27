@@ -1,0 +1,99 @@
+---
+title: "Visualize Your Referral Network with the Fit4Life OS Tree"
+sidebarTitle: "Referrals"
+description: "The Fit4Life OS Referral Tree shows who referred whom, tracks descendant counts, and rolls up revenue per branch so you can reward your best advocates."
+---
+
+The Referrals screen turns your patient network into a visual tree, making it easy to see at a glance which customers are driving new business, how deep each referral chain runs, and how much revenue each branch has generated. Use this view to identify your top advocates and build targeted outreach or rewards programs.
+
+## Opening the Referral Tree
+
+Navigate to `/live/referrals` in your Fit4Life OS dashboard. The screen renders an interactive tree diagram built entirely from the **Referred by** relationships recorded on your customer profiles.
+
+<Note>
+  The tree starts completely flat — every customer appears as a root node with no connections — until you record who referred whom on each customer profile. No referral data is inferred automatically.
+</Note>
+
+---
+
+## Reading the Referral Tree
+
+Each node in the tree represents one customer. The lines connecting nodes show referral relationships: a parent node referred the child nodes beneath it.
+
+<CardGroup cols={2}>
+  <Card title="Descendant Count" icon="sitemap">
+    Each node displays the total number of customers in its subtree — direct referrals plus all of their downstream referrals combined.
+  </Card>
+  <Card title="Branch Revenue" icon="circle-dollar-to-slot">
+    Each node also shows the cumulative revenue rolled up from every customer in that branch, giving you the full financial impact of a single referrer.
+  </Card>
+</CardGroup>
+
+Clicking a node opens a summary panel with the customer's name, their direct referral count, total descendant count, and the revenue attributed to their branch.
+
+---
+
+## Recording a Referral Relationship
+
+Referral links are set on individual customer profiles, not from the tree view itself. The tree re-renders automatically whenever a relationship is saved.
+
+<Steps>
+  <Step title="Open the customer profile">
+    Go to the **Customers** screen and open the profile of the patient you want to link to a referrer.
+  </Step>
+  <Step title="Set the 'Referred by' field">
+    Locate the **Referred by** field on the profile form. Type the name or search for the referring customer in the dropdown selector.
+  </Step>
+  <Step title="Save the profile">
+    Click **Save**. The referral relationship is now recorded, and the Referral Tree will reflect the new connection the next time you load or refresh the `/live/referrals` screen.
+  </Step>
+</Steps>
+
+<Info>
+  You can update or remove a referral relationship at any time by editing the customer profile and changing the **Referred by** field. The tree updates immediately after saving.
+</Info>
+
+---
+
+## Referral Loop Protection
+
+Fit4Life OS prevents two types of invalid referral configurations in the UI:
+
+<CardGroup cols={2}>
+  <Card title="Self-Reference Blocked" icon="ban">
+    A customer cannot be listed as their own referrer. The selector automatically excludes the customer currently being edited.
+  </Card>
+  <Card title="Direct Cycles Blocked" icon="rotate">
+    If Customer A referred Customer B, the system will not allow you to set Customer A as referred by Customer B, preventing circular loops.
+  </Card>
+</CardGroup>
+
+These protections ensure the tree always renders as a valid hierarchy with no infinite loops.
+
+---
+
+## Theme Support
+
+The Referral Tree supports both **light** and **dark** themes, automatically matching the display preference set in your Fit4Life OS interface. Node colors, branch lines, and label contrast adjust accordingly, so the tree remains readable in either mode during patient-facing presentations or internal reviews.
+
+---
+
+## Identifying and Rewarding Top Referrers
+
+The rollup metrics in the tree make it straightforward to find your most valuable advocates.
+
+<Steps>
+  <Step title="Sort by descendant count">
+    Look for the nodes with the highest descendant counts near the top of the tree — these customers have built the deepest referral chains and represent your most active promoters.
+  </Step>
+  <Step title="Compare branch revenue">
+    Cross-reference descendant count with branch revenue to distinguish high-volume referrers from high-value ones. A smaller network that generates outsized revenue may deserve a different reward than a large but low-revenue chain.
+  </Step>
+  <Step title="Export or note top referrers">
+    Record the names of your top referrers from the tree and use the Customers screen to tag or message them. Fit4Life OS does not currently auto-trigger rewards, so outreach is a manual step.
+  </Step>
+</Steps>
+
+<Warning>
+  Branch revenue in the tree reflects all paid orders from customers in that subtree — it is not limited to orders where the referrer received a direct commission. Review your clinic's compensation policy separately when calculating actual referral payouts.
+</Warning>

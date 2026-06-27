@@ -1,0 +1,102 @@
+---
+title: "Track Revenue, Costs, and Payroll in Fit4Life OS Finances"
+sidebarTitle: "Finances"
+description: "Use the Finances screen in Fit4Life OS to monitor P&L, daily sales, payroll owed, and revenue goals — all derived from your real order data."
+---
+
+The Finances screen gives you a live picture of your clinic's financial health — from gross revenue and product-level profit margins to daily sales breakdowns and payroll entries. Every figure is calculated from your actual order data, so the numbers you see always reflect what your clinic has genuinely collected.
+
+## Opening the Finances Screen
+
+Navigate to `/live/finances` in your Fit4Life OS dashboard. The screen is divided into four main sections: **P&L**, **Daily Sales**, **Payroll**, and **Goals**.
+
+<Note>
+  Pending orders — those with a `pending_payment` status where payment has not yet been received — are excluded from all revenue, P&L, and goal calculations by design. Only committed, paid orders count toward your figures.
+</Note>
+
+---
+
+## Profit & Loss (P&L)
+
+The P&L view breaks down revenue and net profit on a per-product basis. Because Fit4Life OS knows exactly which products were sold and at what price, your gross revenue is always accurate. To unlock true profit margin, you need to supply your wholesale costs.
+
+<Steps>
+  <Step title="Open the P&L tab">
+    Select the **P&L** tab at the top of the Finances screen. You will see every product that has generated at least one paid order, listed with its total revenue for the selected period.
+  </Step>
+  <Step title="Enter your cost of goods sold (COGS)">
+    Click the editable **Cost** field next to any product and type in your wholesale cost per unit. The system immediately recalculates net profit for that product across all paid orders.
+  </Step>
+  <Step title="Review net profit per product">
+    Once costs are entered, the **Net Profit** column shows you revenue minus COGS. Use this view to spot which products drive the most margin and which are under-performing.
+  </Step>
+</Steps>
+
+<Info>
+  The P&L table starts empty until paid orders exist in the system. Cost fields are blank by default — your figures will not reflect true profit until you enter your wholesale costs for each product.
+</Info>
+
+---
+
+## Daily Sales Ledger
+
+The Daily Sales ledger gives you an order-by-order account of every transaction processed through Fit4Life OS. Each row shows the order date, the customer, the product purchased, the sales channel, and the payment source.
+
+**Sales channels tracked:**
+
+<CardGroup cols={3}>
+  <Card title="Direct" icon="user">
+    Orders placed directly by clinic staff on behalf of a patient.
+  </Card>
+  <Card title="Referral" icon="share-nodes">
+    Orders attributed to a referring customer in your referral network.
+  </Card>
+  <Card title="SMS Bot" icon="message-sms">
+    Orders initiated through the automated SMS bot conversation flow.
+  </Card>
+</CardGroup>
+
+**Payment sources tracked include:** Cash, Clover, Zelle, and any other tender types configured in your clinic setup.
+
+Use the date filter at the top of the ledger to scope your view to a specific day, week, or custom range. Each row is read-only — edits to orders are made from the Orders screen, and the ledger updates automatically.
+
+---
+
+## Payroll
+
+The Payroll section tracks compensation owed within your clinic. Each entry represents an amount owed to a specific payroll recipient based on the records you have entered.
+
+<Steps>
+  <Step title="View outstanding payroll">
+    Open the **Payroll** tab to see the current "owed to me" balance for each entry. Amounts are derived from the payroll records you have created, not automatically calculated from orders.
+  </Step>
+  <Step title="Add or update entries">
+    Use the **Add Entry** button to record a new payroll item. Specify the recipient, the amount, and the relevant period. Existing entries can be edited or marked as paid at any time.
+  </Step>
+</Steps>
+
+<Note>
+  Payroll entries are independent of order revenue. They are manual records you maintain to track what the clinic owes — they do not automatically deduct from your P&L figures.
+</Note>
+
+---
+
+## Revenue Goals
+
+The Goals section lets you set revenue targets and track progress against them in real time. As paid orders accumulate, Fit4Life OS automatically updates your goal progress without any manual input.
+
+<Steps>
+  <Step title="Set a revenue target">
+    Click **Add Goal**, give the goal a name (for example, "Q3 Monthly Target"), and enter the target dollar amount. Choose whether the goal applies to a specific time window or is open-ended.
+  </Step>
+  <Step title="Monitor progress">
+    The goal card shows your current revenue toward the target, the remaining amount, and a progress indicator. Progress updates whenever a new paid order is recorded.
+  </Step>
+  <Step title="Edit or remove goals">
+    Click any goal card to edit the target amount or delete the goal entirely. Removing a goal does not affect your order data or P&L.
+  </Step>
+</Steps>
+
+<Info>
+  Like the P&L table, the Goals section starts empty. You must create at least one goal to see progress tracking. Goals only count revenue from paid, non-pending orders.
+</Info>

@@ -1,0 +1,112 @@
+---
+title: "Manage Customers and Track Lifetime Value in Fit4Life OS"
+sidebarTitle: "Customers"
+description: "Add, edit, and search your client roster in Fit4Life OS. View order history, lifetime value, reorder cadence, and referral relationships per customer."
+---
+
+The Customers screen, available at `/live/customers`, is your complete client roster. Every person your clinic has ever served lives here, along with their order history, reorder schedule, SMS bot activity, and referral relationships. Keeping this data accurate is the foundation of every automated workflow in Fit4Life OS — from reorder reminders to referral attribution.
+
+## Searching and Filtering the Customer List
+
+The search bar at the top of the customer list performs a live, fuzzy match against customer names, phone numbers, and email addresses. Start typing and the list narrows in real time — no need to press Enter.
+
+Use the filter controls alongside the search bar to slice the list by:
+
+- **Location / State** — useful for multi-location practices
+- **Referral source** — see which acquisition channels are producing customers
+- **Reorder status** — show only customers who are overdue or due soon (see [Reorder Filter](#reorder-filter) below)
+
+## Adding a New Customer
+
+<Steps>
+  <Step title="Open the new customer form">
+    Click the **Add Customer** button in the top-right corner of the customer list.
+  </Step>
+  <Step title="Enter contact details">
+    Fill in the customer's **first and last name**, **phone number**, and **email address**. Phone number is required if you want the SMS bot to reach this customer automatically.
+  </Step>
+  <Step title="Set location and referral source">
+    Select the customer's **state** from the dropdown and choose a **referral source** (for example, Google, referral, social media, or walk-in). These fields power your acquisition reporting.
+  </Step>
+  <Step title="Assign a referring customer (optional)">
+    If this customer was referred by an existing client, search for and select that client in the **Referred by** field. This links the two records in the referral tree.
+  </Step>
+  <Step title="Save the record">
+    Click **Save**. The customer appears immediately in your roster and is eligible to receive SMS bot outreach if a phone number was provided.
+  </Step>
+</Steps>
+
+<Note>
+  Adding a phone number makes the customer immediately reachable by the SMS bot. As soon as the record is saved with a valid phone number, the bot can send reorder reminders, respond to inbound texts, and accept reorder requests from that customer.
+</Note>
+
+## Editing an Existing Customer
+
+<Steps>
+  <Step title="Find the customer">
+    Search for the customer by name, phone, or email using the search bar.
+  </Step>
+  <Step title="Open their profile">
+    Click the customer's row to open their profile page.
+  </Step>
+  <Step title="Edit the record">
+    Click the **Edit** button in the top-right of the profile page. Update any field — name, phone, email, state, referral source, or referring customer — then click **Save**.
+  </Step>
+</Steps>
+
+## Deleting a Customer
+
+<Warning>
+  Deleting a customer is permanent. Their order history, LTV data, and SMS bot interaction log will be removed and cannot be recovered. Only delete records that were created in error.
+</Warning>
+
+To delete a customer, open their profile page, click **Edit**, then click **Delete Customer** at the bottom of the form. Confirm the deletion in the dialog that appears.
+
+## The Customer Profile Page
+
+Click any customer row in the list to open their full profile. The profile page consolidates everything Fit4Life OS knows about that individual.
+
+<CardGroup cols={2}>
+  <Card title="Lifetime Value (LTV)" icon="dollar-sign">
+    The total revenue this customer has generated across all paid orders, calculated automatically and updated in real time as new orders are fulfilled.
+  </Card>
+  <Card title="Order History" icon="receipt">
+    A chronological list of every order the customer has placed, including status, product, amount, and fulfillment date.
+  </Card>
+  <Card title="Reorder Cadence" icon="rotate">
+    The expected interval between this customer's orders, derived from their order history. Used to calculate their next due date and trigger SMS reorder reminders.
+  </Card>
+  <Card title="SMS Bot Interactions" icon="message">
+    A log of every inbound and outbound message exchanged between this customer and the Fit4Life OS SMS bot, including automated reminders and reorder confirmations.
+  </Card>
+</CardGroup>
+
+## Setting a "Referred by" Relationship
+
+The **Referred by** field on a customer record connects that customer to the existing client who referred them. Fit4Life OS uses these one-to-one links to build the referral tree visible in your referral reports.
+
+To set or update a referring customer:
+
+1. Open the customer's profile and click **Edit**.
+2. Type a name in the **Referred by** field to search your existing roster.
+3. Select the correct referring customer and click **Save**.
+
+<Info>
+  A customer can only have one referring customer, but they can appear as the referrer for many other customers. The referral tree is built automatically from these relationships — no manual tree management is required.
+</Info>
+
+## Reorder Filter
+
+The reorder filter lets you focus on customers who need outreach right now. At the top of the customer list, toggle the **Reorder Status** filter to one of the following views:
+
+| Filter | Who it shows |
+|---|---|
+| **Overdue** | Customers who have passed their expected reorder date and have not yet placed a new order |
+| **Due Soon** | Customers whose expected reorder date falls within the next few days |
+| **All** | Your complete roster, regardless of reorder status |
+
+Use these filters in combination with the triage strip on the dashboard to prioritize your daily outreach. Customers surfaced here are also the ones the SMS bot will attempt to contact automatically — reviewing the list helps you personalize follow-up for your highest-value clients.
+
+## Why Phone Number Is Required for the SMS Bot
+
+The Fit4Life OS SMS bot communicates with customers exclusively over text message. Without a valid phone number on file, the bot has no way to send reorder reminders or receive inbound reorder requests from that customer. Customers without a phone number will still appear in your roster and can place orders manually, but they will not participate in any automated outreach workflows.

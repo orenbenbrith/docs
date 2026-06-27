@@ -1,0 +1,63 @@
+---
+title: "Fit4Life OS Frequently Asked Questions for Operators"
+sidebarTitle: "FAQ"
+description: "Answers to the most common questions about Fit4Life OS: SMS bot, orders, exports, the AI assistant, referrals, and clinic data management."
+---
+
+Whether you are just getting started with Fit4Life OS or running a busy clinic day, these answers cover the questions operators ask most often. If you don't find what you need here, open the in-app AI assistant or contact support.
+
+<AccordionGroup>
+
+  <Accordion title="Do SMS bot orders automatically charge my customers?">
+    No. When a customer places an order through the SMS bot, the bot generates a Clover invoice and sends the customer a payment link. The order only commits once the customer pays that invoice. A conversational "yes" — or any other text reply — never charges anyone. No money moves until the customer completes payment through the Clover link.
+  </Accordion>
+
+  <Accordion title="What happens when a customer texts STOP?">
+    The bot permanently opts that number out of all outbound messaging. No further messages are sent to that number, even if the customer has a pending order in progress. To resume communication, the customer must text START to your number to re-opt in. You cannot manually override an opt-out on their behalf.
+  </Accordion>
+
+  <Accordion title="Can the bot see other customers' data?">
+    No. Every bot action is scoped strictly to the sender's phone number. When a customer texts in, the bot can only look up orders, account details, and history that belong to that specific phone number. It has no mechanism to query or surface another customer's information.
+  </Accordion>
+
+  <Accordion title="Can someone text the bot claiming to be me (the owner) to get business data?">
+    No. The SMS bot has no concept of an "owner" or "admin" role. Financial summaries, cross-customer records, and business-level analytics are only accessible from the authenticated OS dashboard — never over text message. Even if someone texts claiming to be the practice owner, they receive the same customer-scoped experience as anyone else.
+  </Accordion>
+
+  <Accordion title="A customer says they never got my reply — what do I check?">
+    Start by opening the Inbox and confirming the reply shows a sent status. If it does, work through these common causes:
+
+    - **Opted out** — The customer may have previously texted STOP. Check their profile for an opt-out flag. They must text START to re-enable delivery.
+    - **A2P campaign not yet approved** — Outbound messages cannot leave your messaging service until your A2P 10DLC campaign is carrier-approved. Check your Twilio console for campaign status.
+    - **Message length** — Fit4Life OS automatically splits long messages to stay within carrier limits, but confirm your deployment is up to date if splitting isn't occurring.
+  </Accordion>
+
+  <Accordion title="Why doesn't my order show up in Finances or P&L?">
+    Orders in **awaiting payment** status are intentionally excluded from all revenue analytics. The platform only counts an order as revenue once the customer pays the Clover invoice and the order commits. Check the order's status in the Orders view — if it reads **awaiting payment**, it will appear in reports as soon as payment is received.
+  </Accordion>
+
+  <Accordion title="How do I export a customer list to share with my accountant?">
+    Navigate to **Reports**, then select the **Customers** view. If your accountant does not need personally identifiable information, turn on the **PII Redaction** toggle before exporting. Choose your preferred format — **CSV** or **XLSX** — and click **Export**. The file downloads immediately to your browser.
+  </Accordion>
+
+  <Accordion title="Can the AI assistant edit my data without me knowing?">
+    No. The assistant always presents a preview card showing exactly what it proposes to change before saving anything. You must click **Confirm** on that card to apply the change. If you close the card or ignore it, nothing is saved. The assistant will never silently write to your data.
+  </Accordion>
+
+  <Accordion title="How does the referral tree get built?">
+    The referral tree is derived entirely from the **Referred by** field on each customer's profile. No referral data is inferred or fabricated. When you first set up the platform the tree will appear flat — it fills in as you record referral relationships by editing each customer's profile and selecting who referred them. The more profiles you complete, the richer the tree becomes.
+  </Accordion>
+
+  <Accordion title="Why is the bot answering in categories instead of listing everything at once?">
+    Your full product menu contains 37 items. Sending all of them in a single SMS would exceed carrier character limits, causing the message to be dropped or rejected before it reaches the customer. The bot routes broad requests by category so that every reply stays within the limit and arrives reliably. Customers can then ask for details on any specific category or product.
+  </Accordion>
+
+  <Accordion title="How do I add a customer that should be reachable by SMS?">
+    Go to the [Customers page](/features/customers) and create a new customer record. Make sure you include their 10-digit mobile phone number in the phone field. The bot recognizes customers by their phone number, so as soon as the record is saved that customer can text in and interact with the bot immediately — no additional setup required.
+  </Accordion>
+
+  <Accordion title="How long does my login session last?">
+    Sessions last 24 hours from the time you log in. After 24 hours, Fit4Life OS automatically redirects you to the login page where you enter the practice password to start a new session. There is no automatic extension — you will need to log in again each day.
+  </Accordion>
+
+</AccordionGroup>

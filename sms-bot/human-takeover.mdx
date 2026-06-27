@@ -1,0 +1,61 @@
+---
+title: "Take Over Any SMS Conversation from the Fit4Life Inbox"
+sidebarTitle: "Human Takeover"
+description: "Learn how to take manual control of any SMS bot conversation from the Fit4Life OS Operations Inbox and hand it back to the AI when you're done."
+---
+
+There are moments when a customer needs a real person — a clinical question, a billing dispute, an upset client, or a new lead who deserves a personal touch. The Human Takeover feature lets you step into any active bot conversation from the Operations Inbox, send replies yourself over SMS, and return control to the bot when you're finished. The customer experience is seamless; they receive your message through the same thread.
+
+## Accessing the Operations Inbox
+
+Navigate to `/live/inbox` in your Fit4Life OS dashboard. The inbox lists all active SMS threads, with indicators showing which are currently handled by the bot and which have been taken over by a human. Click any thread to open the message pane and see the full conversation history.
+
+<Info>
+The message pane auto-scrolls to the newest message when you open a thread and after you send a reply, so you always see the current state of the conversation without scrolling manually.
+</Info>
+
+## Taking Over a Conversation
+
+<Steps>
+  <Step title="Open the thread in the inbox">
+    Go to `/live/inbox` and click the customer's thread. Review the conversation history to understand where the bot left off.
+  </Step>
+  <Step title="Click Take Over">
+    Click the **Take Over** button at the top of the thread. The thread is immediately flagged as human-controlled. The bot will not send any further automated replies while the thread is in this state.
+  </Step>
+  <Step title="Send your manual reply">
+    Type your message in the composer at the bottom of the pane and hit **Send**. Your reply goes out via SMS from the same Twilio number the customer has been texting. The thread is marked as taken over.
+  </Step>
+  <Step title="Continue the conversation">
+    Respond to any follow-up messages the customer sends. The bot remains paused for this thread until you explicitly hand control back.
+  </Step>
+</Steps>
+
+<Tip>
+You do not need to click Take Over before typing your first reply. Sending a manual message from the composer automatically flips the thread to human-controlled mode, so you can jump straight into the conversation.
+</Tip>
+
+## Handing Back to the Bot
+
+When the conversation is resolved and you want the bot to resume handling that customer's thread, click **Hand Back to AI** (labeled **AI Handling** in some views) at the top of the thread. The bot is immediately reactivated for that conversation and will respond normally to the next message the customer sends.
+
+<Note>
+Handing back to the bot does not send any message to the customer. The transition is invisible on their end. The next time they text, the bot picks up as usual.
+</Note>
+
+## Takeover Is Per-Thread
+
+Taking over one conversation has no effect on any other bot threads. The bot continues to handle all other active conversations normally while you are manually managing a specific thread. You can have multiple threads in human-controlled mode simultaneously without affecting bot performance on the rest.
+
+## When to Use Human Takeover
+
+Use takeover in situations where the bot's guardrails or capabilities are not the right fit:
+
+- **Clinical questions** — any conversation that has escalated because a customer asked about dosing, side effects, or medical guidance
+- **Upset or distressed customers** — when a customer is frustrated, a human response is more appropriate than an automated one
+- **New-lead negotiation** — when an unrecognized sender has expressed interest in the program and needs a personal intake conversation
+- **Personal follow-ups** — proactive check-ins or relationship-building messages you want to send directly
+
+<Warning>
+The bot will not send any reply while a thread is in human-controlled mode. If you take over a thread and then step away without handing it back, the customer will not receive any automated responses until you return control to the AI.
+</Warning>

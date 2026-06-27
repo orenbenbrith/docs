@@ -1,0 +1,90 @@
+---
+title: "Fit4Life OS Dashboard: Priority Actions and Revenue Metrics"
+sidebarTitle: "Dashboard"
+description: "The Fit4Life OS dashboard surfaces today's priority actions, revenue metrics, and product performance so you can run your clinic at a glance."
+---
+
+The dashboard is the home screen of Fit4Life OS, available at `/live`. Every time you open the platform, it gives you an immediate read on what needs your attention, how revenue is trending, and which products are driving growth — all without digging through menus or running manual reports.
+
+## The "Needs You" Triage Strip
+
+The triage strip sits at the top of the dashboard and is the first thing you should scan each morning. It surfaces the highest-priority items that require a human decision today, grouped into three card types and ranked by urgency — most critical on the left.
+
+<CardGroup cols={3}>
+  <Card title="Overdue Reorders" icon="circle-exclamation">
+    Customers whose reorder window has already passed. Each card shows the customer name, product, and how many days overdue. Click the card to open the pre-filtered customer list.
+  </Card>
+  <Card title="Awaiting Fulfillment" icon="box">
+    Orders that have been paid but not yet marked as fulfilled. Click through to the order board filtered to that status so you can action them in one step.
+  </Card>
+  <Card title="Due Soon" icon="clock">
+    Customers approaching their next expected reorder date. Use this list to get ahead of reorders before they lapse.
+  </Card>
+</CardGroup>
+
+When more cards exist than fit on screen, the strip collapses the overflow and shows a **+N more** indicator. Click it to expand the full list.
+
+<Tip>
+  Work through the triage strip top-to-bottom each morning. Clearing "Overdue Reorders" first protects your retention rate; clearing "Awaiting Fulfillment" keeps your cash-flow reporting accurate.
+</Tip>
+
+## KPI Tiles
+
+Directly below the triage strip, four tiles give you a real-time snapshot of your business for the currently selected date range.
+
+| Tile | What it shows |
+|---|---|
+| **Today's Revenue** | Total dollar value of paid orders in the selected period |
+| **Order Count** | Number of individual orders placed and paid |
+| **New Customers** | Unique customers added during the period |
+| **LTV** | Average lifetime value across your entire customer base |
+
+<Info>
+  KPI tiles always reflect your **whole business** — they are not filtered by any individual product or status view you may have open elsewhere on the page.
+</Info>
+
+## Date Range Filter
+
+Use the date range selector in the top-right of the dashboard to control which period all charts and tiles reflect. The available presets are:
+
+- **Today** — the current calendar day
+- **Week** — the current Monday-to-Sunday week
+- **Month** — the current calendar month
+- **Quarter** — the current fiscal quarter
+- **All Time** — every order since your account was created
+- **Custom** — pick any start and end date using the date picker
+
+Switching the range updates every tile, chart, and panel on the page simultaneously.
+
+## Revenue Trend Chart
+
+The revenue trend chart plots paid-order revenue across the selected date range. Use it to spot day-of-week patterns, identify growth plateaus, and correlate revenue spikes with campaigns or new product launches. Hover over any data point to see the exact figure for that interval.
+
+## Top Products Panel
+
+The top products panel ranks your catalog items by total revenue generated within the selected period. It shows each product's name, unit count sold, and revenue contribution. Use it to identify your highest-performing SKUs and ensure they are always in stock and included in reorder outreach.
+
+## Payment Mix Donut Chart
+
+The payment mix chart breaks down revenue by payment method (for example, card, cash, or external financing). Use it to understand how your customers prefer to pay and to flag any over-reliance on a single channel that could create risk.
+
+## Acting on a "Needs You" Card
+
+<Steps>
+  <Step title="Spot the card">
+    Scan the triage strip for cards with red urgency indicators — those are your most time-sensitive items.
+  </Step>
+  <Step title="Click the card">
+    Clicking any card takes you directly to the relevant filtered list — either the customer list or the order board — pre-scoped to only the records that need attention.
+  </Step>
+  <Step title="Take action">
+    From the filtered list, reach out to a customer, create a new order, or mark an existing order as fulfilled. The card count in the triage strip updates in real time as you resolve items.
+  </Step>
+  <Step title="Return to the dashboard">
+    Navigate back to `/live` at any time to see your updated triage strip and confirm all urgent items have been cleared.
+  </Step>
+</Steps>
+
+## The ⌘K Command Palette
+
+Press **⌘K** (Mac) or **Ctrl+K** (Windows) from anywhere in Fit4Life OS to open the command palette. Type a customer name, order ID, or screen name to jump there instantly — no clicking through the sidebar required. The command palette is the fastest way to navigate when you know what you're looking for.

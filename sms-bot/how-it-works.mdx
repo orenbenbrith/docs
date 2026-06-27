@@ -1,0 +1,91 @@
+---
+title: "How the Fit4Life SMS Bot Handles Customer Conversations"
+sidebarTitle: "How It Works"
+description: "Understand how the Fit4Life SMS bot routes menu browsing, reorders, and support requests — and how it stays grounded in your real product catalog."
+---
+
+Every customer interaction starts with an inbound text. From there, the bot identifies the sender, personalizes the response, and routes the request through the appropriate tool — whether that's a catalog lookup, an order recall, or a support answer. Understanding this flow helps you anticipate how the bot will behave and where it will ask your team to step in.
+
+## Conversation Flow
+
+<Steps>
+  <Step title="Customer texts your Twilio number">
+    The inbound message triggers a webhook to your Fit4Life OS backend. The system receives the sender's phone number and message body.
+  </Step>
+  <Step title="Bot identifies the sender">
+    The bot looks up the phone number in your customer database. If it finds a match, it retrieves the customer's profile, order history, and archived conversation threads.
+  </Step>
+  <Step title="Bot greets by first name">
+    Recognized customers are greeted by their first name. This signals to them that the system knows who they are and that their account is accessible.
+  </Step>
+  <Step title="Bot handles the request with tools">
+    The bot interprets the customer's intent and calls the appropriate tool — catalog search, category browse, order lookup, or FAQ response — then replies over SMS.
+  </Step>
+</Steps>
+
+## Menu Browsing
+
+When a customer asks a broad question like "what do you have?" or "what's on the menu?", the bot routes the query by category and returns a structured list of available product categories. From there, the customer can drill into a specific category or name a product directly.
+
+- **Named category** — if the customer asks about a specific category (for example, "what peptides do you carry?"), the bot queries your catalog and returns all active products in that category with their prices.
+- **Specific product** — if the customer names a product, the bot runs a search and returns the matching result, including description and price.
+
+<Info>
+All catalog responses are pulled live from your product database. The bot does not cache or guess prices — what the customer sees is exactly what is in your system at that moment.
+</Info>
+
+## Reorder Flow
+
+Reorders are the most common bot-assisted transaction. Here is how the full reorder sequence works:
+
+<Steps>
+  <Step title="Customer expresses reorder intent">
+    The customer texts something like "reorder" or "I want my usual." The bot recognizes the intent and looks up their most recent completed order.
+  </Step>
+  <Step title="Bot presents the last order with price">
+    The bot replies with the items and total from the previous order and asks the customer to confirm. For example: "Your last order was [Product Name] — $X. Reply YES to reorder."
+  </Step>
+  <Step title="Customer confirms">
+    The customer replies with a confirmation. This creates a **pending payment** order record in your system and triggers the bot to generate a Clover invoice.
+  </Step>
+  <Step title="Bot sends the payment link">
+    The bot texts the customer a Clover-hosted payment link. The order remains in pending status until payment is received.
+  </Step>
+  <Step title="Payment commits the order">
+    When Clover receives payment, it fires a webhook to Fit4Life OS. The order status updates from pending to confirmed. The bot does not send a final confirmation message unless you have configured one.
+  </Step>
+</Steps>
+
+<Note>
+A conversational "yes" alone does not charge the customer. Payment through the Clover link is the only commit trigger. This protects both you and your customers from accidental charges.
+</Note>
+
+## Order Gating
+
+The bot enforces a strict gate between conversation and commerce. No order is ever committed based solely on what a customer says over SMS. The sequence is always: intent → pending order → invoice link → payment webhook → confirmed order. If a customer confirms but never pays, the pending order can be reviewed and cleared from your dashboard.
+
+## Memory and Recall
+
+The bot maintains a conversation archive for each customer. When a new message arrives, the system retrieves relevant past threads and includes them as context for the current conversation. This means the bot can reference what a customer asked last week without requiring the customer to repeat themselves.
+
+<Info>
+This is retrieval memory — the bot searches and surfaces past conversation snippets. It is not model retraining. The underlying Claude model does not learn from your customers' conversations.
+</Info>
+
+## Unrecognized Senders
+
+When a text arrives from a phone number that does not match any customer in your database, the bot applies a split policy:
+
+- **Benign FAQs** (hours, location, general program questions) — the bot answers normally without requiring account identification.
+- **Purchase intent** — if an unknown number asks to buy something or place an order, the bot does not attempt to process it. Instead, it flags the thread in your Operations Inbox as a new lead and a human handles intake.
+
+## What the Bot Cannot Do
+
+- Access any customer's data other than the customer who is currently texting
+- Reveal clinic financials, supplier costs, margin information, or internal business data
+- Place, confirm, or charge an order without first sending a Clover payment link
+- Provide clinical guidance — dosing questions, side-effect questions, and medical advice are always escalated
+
+## SMS Formatting
+
+All bot replies use **GSM-7 safe characters** to ensure maximum carrier compatibility. If a response exceeds the standard SMS character limit, the bot splits it into multiple messages automatically so no single SMS is truncated by the carrier. Avoid configuring custom reply templates with Unicode-only characters (curly quotes, emoji, or accented characters not in the GSM-7 set), as these force messages into UCS-2 encoding and reduce the per-message character limit significantly.

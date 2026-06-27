@@ -1,0 +1,85 @@
+---
+title: "Monitor Live SMS Conversations in the Fit4Life Inbox"
+sidebarTitle: "Inbox"
+description: "The Fit4Life OS Operations Inbox shows every active SMS bot thread in real time, lets you send manual replies, and supports instant human takeover."
+---
+
+The Operations Inbox gives you a live window into every SMS conversation your AI bot is managing. From a single screen you can read ongoing threads, reply manually, and take over from the bot whenever a patient needs a human touch. Navigate to `/live/inbox` to open it.
+
+<Note>
+  The Inbox is the only place in Fit4Life OS where you can monitor and intervene in live bot conversations. Bookmark it so your front-desk team can reach it instantly.
+</Note>
+
+## What you see
+
+The Inbox is split into two panes.
+
+**Thread list (left pane)**
+
+Every active SMS thread appears as a row showing:
+
+- **Customer name** — pulled from the customer record linked to that phone number.
+- **Phone number** — the customer's 10-digit number, which is also the unique thread key.
+- **Last message preview** — the most recent inbound or outbound message, truncated to one line.
+- **AI / Human status indicator** — a badge showing whether the bot is currently in control (`AI`) or a staff member has taken over (`Human`).
+
+**Message pane (right pane)**
+
+Select any thread in the left pane to load the full conversation history on the right. Messages are ordered oldest-to-newest, and the pane auto-scrolls to the bottom so the latest exchange is always visible.
+
+## Real-time updates
+
+The Inbox polls for new messages continuously. Incoming replies and outbound bot messages appear without requiring a page refresh. The thread list re-sorts automatically so the most recently active conversation floats to the top.
+
+## Finding a specific customer's thread
+
+Use the search bar at the top of the thread list to filter by customer name or phone number. Because threads are keyed to the customer's 10-digit phone number, searching by phone is the fastest way to locate an exact record.
+
+## Sending a manual reply
+
+<Steps>
+  <Step title="Select the thread">
+    Click the customer's row in the thread list to open their conversation.
+  </Step>
+  <Step title="Compose your message">
+    Type your reply in the text box at the bottom of the message pane.
+  </Step>
+  <Step title="Send">
+    Click **Send** or press **Enter**. Your message is delivered immediately and appended to the conversation history.
+  </Step>
+</Steps>
+
+## AI vs. human control
+
+Each thread displays a status badge indicating who is currently driving the conversation.
+
+<CardGroup cols={2}>
+  <Card title="AI" icon="robot">
+    The bot is handling replies automatically. Incoming messages are processed and responded to without staff involvement.
+  </Card>
+  <Card title="Human" icon="user">
+    A staff member has taken over. The bot will not send automated replies to this thread until control is returned to AI.
+  </Card>
+</CardGroup>
+
+To transfer control, use the **Take Over / Return to AI** toggle in the message pane header. Transferring to Human pauses all bot replies for that thread immediately.
+
+## Handling send failures
+
+If a message cannot be delivered, the thread shows a **Send failed** banner beneath the affected message. This typically indicates a carrier issue or an invalid number.
+
+To retry:
+
+<Steps>
+  <Step title="Locate the failed message">
+    Open the thread. Failed messages are marked with a red error indicator.
+  </Step>
+  <Step title="Click Retry">
+    Select **Retry** next to the failed message. Fit4Life OS will attempt delivery again.
+  </Step>
+  <Step title="Verify delivery">
+    A successful retry removes the error indicator and updates the last-message timestamp.
+  </Step>
+</Steps>
+
+If retries continue to fail, confirm the customer's phone number is correct in their customer record and that your SMS provider connection is active in your account settings.

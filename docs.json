@@ -1,0 +1,80 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Fit4Life OS",
+  "theme": "almond",
+  "colors": {
+    "primary": "#ef7025",
+    "light": "#eec9bc",
+    "dark": "#4fa1ab"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "getting-started/login-and-access"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/dashboard",
+              "features/customers",
+              "features/orders",
+              "features/finances",
+              "features/referrals",
+              "features/menu"
+            ]
+          },
+          {
+            "group": "SMS Bot",
+            "pages": [
+              "sms-bot/overview",
+              "sms-bot/how-it-works",
+              "sms-bot/human-takeover",
+              "sms-bot/opt-in-compliance"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "operations/inbox",
+              "operations/exports",
+              "operations/assistant",
+              "operations/automation"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@fit4lifecare.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Open OS",
+      "href": "https://fit4lyfe-nine.vercel.app/live"
+    }
+  },
+  "footer": {
+    "socials": {}
+  }
+}
