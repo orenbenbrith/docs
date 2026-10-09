@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "rent-manager": {
+      "type": "http",
+      "url": "https://rm-acf.tail68f482.ts.net/mcp"
+    }
+  }
+}
